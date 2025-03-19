@@ -17,10 +17,27 @@ namespace test
 
         static void Main(string[] args)
         {
-            Car car = new Car(1, "Model1", "Make1", 2021, "Red");
+            bool highTemp = false;
+            
+            Car car = new Car(1, "Charger", "Dodge", 2015, "Black");
             Console.WriteLine(car.ToString());
+            int i = 0;
+            int j = 5;
 
+            Random random = new Random();
+            int num = random.Next(i, j);
+            highTemp = num > 5 ? true : false;
+            Console.WriteLine(num + " " + highTemp);
 
+            Console.WriteLine("i = " + i + " j = " + j);
+
+                
+                if (!highTemp){ car.TurnKey(); car.Start(); car.shift(); car.Accelerate(); }
+                else
+                {
+                    Console.WriteLine("Car start failed");
+
+                }
+            }
         }
     }
-}

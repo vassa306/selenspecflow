@@ -25,13 +25,14 @@ namespace test
         
         public bool Start()
         {
-            Console.WriteLine("Starting...");
+            Console.WriteLine("Starting..." + Model + " " + Make);
             return true;
         }
 
         public void Accelerate()
         {
-            Console.WriteLine("Accelerating...");
+
+            Console.WriteLine("Accelerating..." + Model + " " + Id);
         }
 
         public bool TurnKey()

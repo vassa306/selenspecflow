@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,27 +18,61 @@ namespace test
 
         static void Main(string[] args)
         {
+            Car car = new Car(1, "Camry", "Toyota", 2020, "Red");
             bool highTemp = false;
-            
-            Car car = new Car(1, "Charger", "Dodge", 2015, "Black");
-            Console.WriteLine(car.ToString());
-            int i = 0;
-            int j = 5;
-
+            bool lowTemp = false;
             Random random = new Random();
-            int num = random.Next(i, j);
-            highTemp = num > 5 ? true : false;
-            Console.WriteLine(num + " " + highTemp);
+            int num = random.Next(0, 100);
 
-            Console.WriteLine("i = " + i + " j = " + j);
+            switch (num)
+            {
+                case int n when n < 10:
+                    highTemp = false;
+                    lowTemp = true;
+                    break;
 
-                
-                if (!highTemp){ car.TurnKey(); car.Start(); car.shift(); car.Accelerate(); }
-                else
+                case int n when n > 10 && n < 20:
+                    highTemp = false;
+                    lowTemp = false;
+                    break;
+
+                case int n when n > 70 && n < 100:
+                    highTemp = true;
+                    lowTemp = false;
+                    break;
+
+                default:
+                    highTemp = false;
+                    lowTemp = false;
+                    break;
+            }
+
+
+
+            Console.WriteLine("Temperature: " + num + " " + highTemp + " " + lowTemp);
+
+            try
+            {
+                if (highTemp)
                 {
-                    Console.WriteLine("Car start failed");
-
+                    throw new Exception("High Temperature, Car not starting...");
                 }
+                else if (lowTemp)
+                {
+                    throw new Exception("Low Temperature, Car not starting...");
+                }
+
+                car.Start();
+                car.Accelerate();
+                car.Brake();
+                car.shift();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                
             }
         }
     }
+
+}

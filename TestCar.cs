@@ -16,7 +16,7 @@ namespace test
 
         }
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Car car = new Car(1, "Camry", "Toyota", 2020, "Red");
             bool highTemp = false;
@@ -47,9 +47,7 @@ namespace test
                     break;
             }
 
-
-
-            Console.WriteLine("Temperature: " + num + " " + highTemp + " " + lowTemp);
+            Console.WriteLine($"Temperature: {num}, HighTemp: {highTemp}, LowTemp: {lowTemp}");
 
             try
             {
@@ -70,7 +68,7 @@ namespace test
             catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
-                
+               
             }
         }
     }

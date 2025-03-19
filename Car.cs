@@ -6,21 +6,24 @@ using System.Threading.Tasks;
 
 namespace test
 {
-    class Car
+    public class Car
     {
         public int Id { get; set; }
         public string Model { get; set; }
         public string Make { get; set; }
         public int Year { get; set; }
         public string Color { get; set; }
+        public CarType Type { get; set; }
 
-        public Car(int id, string model, string make, int year, string color)
+        public Car(int id, string model, string make, int year, string color, CarType type)
         {
             Id = id;
             Model = model;
             Make = make;
             Year = year;
             Color = color;
+            Type = type;
+
         }
         
         public bool Start()
@@ -37,7 +40,7 @@ namespace test
 
         public bool TurnKey()
         {
-            Console.WriteLine("Turning key and Starting...");
+            Console.WriteLine("Turning key and Starting..." + Model);
             return true;
         }
 
